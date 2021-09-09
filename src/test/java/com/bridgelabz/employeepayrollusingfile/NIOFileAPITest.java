@@ -2,6 +2,7 @@ package com.bridgelabz.employeepayrollusingfile;
 
 import name.finsterwalder.fileutils.FileUtils;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 
 import java.io.File;
@@ -60,5 +61,12 @@ public class NIOFileAPITest {
 
 
     }
+    @Test
+    public void givenDirectoryWhenWatchedListAllTheActivities() throws IOException{
+        Path dir=Paths.get(HOME+"/"+PLAY_WITH_NIO);
+        Files.list(dir).filter(Files::isRegularFile).forEach(System.out::println);
+        new Java8Watch(dir).processEvents();
+    }
+
 
 }
